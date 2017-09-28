@@ -4,3 +4,6 @@
 [submodule "tilequeue"]
 	path = tilequeue
 	url = https://github.com/tilezen/tilequeue
+[submodule "vector-datasource"]
+	path = vector-datasource
+	url = https://github.com/tilezen/vector-datasource
