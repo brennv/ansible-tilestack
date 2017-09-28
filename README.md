@@ -19,8 +19,26 @@ these repos as git submodules:
 
 ### Prerequisites
 
-Postgres configured with a user named `osm` and a database named `osm`.
-
-Optional: Redis, for caching responses.
+- At the moment, only Python 2.7.x is supported.
+- Postgres 9.5+ with postgis enabled.
+- Optional: Redis for caching.
 
 ### Installing tilestack
+
+Adjust the configuration files in `/config` as needed and start the install:
+
+```
+source install.sh
+```
+
+## Running
+
+```
+python tileserver/__init__.py config.yaml
+```
+
+Check test endpoints:
+
+```
+source scripts/run-tests.sh
+```
