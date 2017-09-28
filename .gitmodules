@@ -1,3 +1,6 @@
 [submodule "tileserver"]
 	path = tileserver
 	url = https://github.com/tilezen/tileserver
+[submodule "tilequeue"]
+	path = tilequeue
+	url = https://github.com/tilezen/tilequeue
