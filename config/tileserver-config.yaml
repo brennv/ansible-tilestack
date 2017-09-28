@@ -6,7 +6,7 @@ postgresql:
   # pgbouncer, which can dispatch to different back end databases
   # based on the name.
   dbnames: [osm]
-  user: science
+  user: osm
   password:
 queries:
   config: ../vector-datasource/queries.yaml
