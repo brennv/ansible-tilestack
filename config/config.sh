@@ -6,3 +6,5 @@ export PGUSER='osm'
 export PGPASSWORD='super-secret'
 # postgres version
 export PGVERSION='9.5'
+
+# TODO check that current user is also PGUSER?
