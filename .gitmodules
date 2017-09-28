@@ -1,0 +1,3 @@
+[submodule "tileserver"]
+	path = tileserver
+	url = https://github.com/tilezen/tileserver
