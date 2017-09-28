@@ -1,0 +1,14 @@
+language: python
+python:
+  - 2.7
+  # - 3.6
+
+install:
+  # - pip install -r requirements.txt
+  - pip install pytest pytest-cov pylama
+
+script: python -m pytest --durations=3 --cov=scripts/ tests/
+# after_success: bash <(curl -s https://codecov.io/bash)
+after_script:
+  # - python -m pylama -i E501 scripts/ || true
+  - grep --exclude-dir=.git -EInr "TODO|BUG|LOL" . 2>/dev/null

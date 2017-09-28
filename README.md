@@ -1,5 +1,7 @@
 # tilestack
 
+[![Build Status](https://travis-ci.org/brennv/tilestack.svg?branch=master)](https://travis-ci.org/brennv/tilestack)
+
 This builds the [tilezen](https://github.com/tilezen) stack and includes
 these repos as git submodules:
 
