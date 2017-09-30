@@ -1,9 +1,0 @@
-[submodule "tilequeue"]
-	path = tilequeue
-	url = https://github.com/brennv/tilequeue
-[submodule "tileserver"]
-	path = tileserver
-	url = https://github.com/brennv/tileserver
-[submodule "vector-datasource"]
-	path = vector-datasource
-	url = https://github.com/brennv/vector-datasource
