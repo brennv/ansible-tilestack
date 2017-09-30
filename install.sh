@@ -1,5 +1,5 @@
-source config/config.sh
-# source scripts/install-postgres.sh
-source scripts/install-packages.sh
-source scripts/install-modules.sh
-source scripts/load-data.sh
+source config.sh
+# source install/postgres.sh
+# source install/redis.sh
+source install/packages.sh
+source data/load.sh

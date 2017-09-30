@@ -1,5 +1,5 @@
 # install postgres / postgis
-sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.5-postgis-2.2
+sudo apt-get -y install postgresql postgresql-contrib postgis postgresql-9.5-postgis-2.2
 
 # If you are setting up PostgreSQL for a single-user install, you may want to
 # create a new database user (i.e: whoami). You can skip this next step if you
@@ -7,7 +7,9 @@ sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.5-postgi
 
 #     sudo -u postgres psql
 #     CREATE USER [your username] SUPERUSER PASSWORD 'your password here';
+#     \du
 #     \q
+#     sudo -u science psql
 
 # TODO use env vars in psql
 
@@ -17,4 +19,8 @@ sudo apt-get install postgresql postgresql-contrib postgis postgresql-9.5-postgi
 #     createdb -E UTF-8 -T template0 $PGDB
 #     psql -c 'CREATE EXTENSION postgis; CREATE EXTENSION hstore;' -d $PGDB -U $PGUSER
 
-# TODO Find and check pg_hba.conf
+# sudo nano /etc/postgresql/9.5/main/pg_hba.conf
+
+# Database administrative login by Unix domain socket
+# local   all             postgres                                peer
+local   all             all                                     peer
