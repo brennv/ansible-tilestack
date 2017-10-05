@@ -1,0 +1,121 @@
+# Ansible playbook for deploying a Flask app
+
+---
+# Install system apt packages
+- hosts: tileservers
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: update cache
+    apt: name=python-software-properties state=present update_cache=yes cache_valid_time=43200
+  - apt_repository:
+      repo: 'ppa:tilezen'
+      state: present
+  - name: disable lighttpd
+    systemd: name=lighttpd state=stopped enabled=no  # To avoid conflicts with nginx
+  - name: install packages
+    apt: name={{item}} state=installed
+    with_items:
+      - tree         # Optional
+      - python-pip
+      - python-dev
+      - python3-pip  # Optional
+      - python3-dev  # Optional
+      - nginx
+      - git
+      - unzip
+      - python-yaml
+      - python-jinja2
+      - osm2pgsql  # from ppa:tilezen
+      - build-essential
+      - autoconf
+      - libtool
+      - pkg-config
+      - python-virtualenv
+      - libgeos-dev
+      - libpq-dev
+      - python-pip
+      - python-pil
+      - libxml2-dev
+      - libxslt-dev
+
+# Install Python modules
+- hosts: tileservers
+  tasks:
+  - name: clone vector-datasource
+    git:
+      repo: '{{ vector_datasource_repo }}'
+      dest: /home/{{ ansible_ssh_user }}/tilestack/vector-datasource
+      update: yes
+      version: '{{ vector_datasource_version }}'
+  - name: clone tileserver
+    git:
+      repo: '{{ tileserver_repo }}'
+      dest: /home/{{ ansible_ssh_user }}/tilestack/tileserver
+      update: yes
+      version: '{{ tileserver_version }}'
+  - name: clone tilequeue
+    git:
+      repo: '{{ tilequeue_repo }}'
+      dest: /home/{{ ansible_ssh_user }}/tilestack/tilequeue
+      update: yes
+      version: '{{ tilequeue_version }}'
+
+  - name: deconflict tilequeue
+    replace:
+      path: /home/{{ ansible_ssh_user }}/tilestack/tilequeue/requirements.txt
+      regexp: '(git\+https\:\/\/github\.com\/tilezen\/raw_tiles).*'
+      replace: ''
+      backup: yes
+  - name: deconflict tileserver
+    replace:
+      path: /home/{{ ansible_ssh_user }}/tilestack/tileserver/requirements.txt
+      regexp: '(git\+https\:\/\/github\.com\/mapzen).*'
+      replace: ''
+      backup: yes
+  - name: deconflict vector-datasource
+    replace:
+      path: /home/{{ ansible_ssh_user }}/tilestack/vector-datasource/requirements.txt
+      regexp: '(git\+https\:\/\/github\.com\/tilezen).*'
+      replace: ''
+      backup: yes
+
+  - name: install raw_tiles
+    pip:
+      name: git+https://github.com/tilezen/raw_tiles
+      virtualenv: /home/{{ ansible_ssh_user }}/tilestack/env
+      virtualenv_python: python2.7
+
+  - name: install tilequeue modules in a virtualenv
+    pip:
+      requirements: /home/{{ ansible_ssh_user }}/tilestack/tilequeue/requirements.txt
+      virtualenv: /home/{{ ansible_ssh_user }}/tilestack/env
+      virtualenv_python: python2.7
+  - name: install tileserver modules in a virtualenv
+    pip:
+      requirements: /home/{{ ansible_ssh_user }}/tilestack/tileserver/requirements.txt
+      virtualenv: /home/{{ ansible_ssh_user }}/tilestack/env
+      virtualenv_python: python2.7
+  - name: install vector-datasource modules in a virtualenv
+    pip:
+      requirements: /home/{{ ansible_ssh_user }}/tilestack/vector-datasource/requirements.txt
+      virtualenv: /home/{{ ansible_ssh_user }}/tilestack/env
+      virtualenv_python: python2.7
+  # - name: remove conflicted sister repo dependencies; tileserver, tilequeue
+  #   pip: name={{item}} state=absent
+  #   with_items:
+      # - tileserver
+      # - tilequeue
+  # - name: remove conflicted sister repo dependencies; tilequeue
+  #   pip: name={{item}} state=absent
+  #   with_items:
+  #     - tilequeue
+  # - name: run setup
+  #   pip: name=/home/{{ ansible_ssh_user }}/tilestack/{{item}}
+  #        extra_args='-e'
+  #        virtualenv=/home/{{ ansible_ssh_user }}/tilestack/env
+  #        virtualenv_python=python2.7
+  #   with_items:
+  #     - vector-datasource
+  #     - tileserver
+  #     - tilequeue
