@@ -1,0 +1,24 @@
+[tileservers]
+# xxx.xxx.xx.xxx
+
+
+[tileservers:vars]
+ansible_ssh_user=science
+# tilestack_repo=https://github.com/brennv/ansible-tilestack
+# tilestack_repo_version=master
+
+vector_datasource_repo=https://github.com/tilezen/vector-datasource
+vector_datasource_version=v1.4.0
+
+tileserver_repo=https://github.com/tilezen/tileserver
+tileserver_version=v2.1.0
+
+tilequeue_repo=https://github.com/tilezen/tilequeue
+tilequeue_version=v1.9.0
+
+
+default_location=new-york_new-york
+# export PGUSER='science'
+PGPASSWORD='super-secret'
+PGDB='osm'
+PGVERSION='9.5'
