@@ -68,7 +68,7 @@ tiles:
       # 'new-york_new-york', to only seed tiles from those areas
       # rather than all of them.
       cities:
-        - new-york_new-york
+        - '{{ default_location }}'
 
     # parse the csv file from Mapbox's post on the top 50k most
     # requested tiles
@@ -100,7 +100,7 @@ tiles:
 
   intersect:
     # path to file that contains expired tile coordinates
-    # or directory where expired tile coordinates files are generated  
+    # or directory where expired tile coordinates files are generated
     expired-location: <path/to/expired/tiles/list>
     # the lowest zoom level to consider when enqueueing tiles to
     # process on update
