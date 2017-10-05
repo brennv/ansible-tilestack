@@ -16,6 +16,12 @@ tileserver_version=v2.1.0
 tilequeue_repo=https://github.com/tilezen/tilequeue
 tilequeue_version=v1.9.0
 
+mapbox_vector_tile_repo=https://github.com/tilezen/mapbox-vector-tile
+mapbox_vector_tile_version=v1.2.0
+
+raw_tiles_repo=https://github.com/tilezen/raw_tiles  # not raw-tiles
+raw_tiles_version=master
+
 
 default_location=new-york_new-york
 # export PGUSER='science'
