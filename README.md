@@ -11,3 +11,32 @@ The stack integrates 5 repos from [Tilezen](https://github.com/tilezen):
 - tilequeue
 - mapbox-vector-tile
 - raw_tiles
+
+# Prerequisites
+
+Install ansible and customize `.hosts`.
+
+```
+pip install ansible
+```
+
+# Usage
+
+Deploy a tileserver.
+
+```
+ansible-playbook deploy.yml
+```
+
+# Debugging
+
+Edit `deploy.yml` and add some v's for verbosity:
+
+```
+ansible-playbook -vv deploy.yml
+```
+
+# In-progress
+
+- Configuring nginx and gnuicorn for tileserver api
+- Exposing postgres for direct access
