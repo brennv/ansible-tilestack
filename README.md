@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/brennv/tilestack.svg?branch=master)](https://travis-ci.org/brennv/tilestack)
 
-This is an effort to automate the remote deployment of a custom postgis tileserver serving OpenStreetMap data for the Bay Area.
+This is an effort to automate the remote deployment of a custom postgis tileserver serving OpenStreetMap data for the Bay Area, made possible by the [Mapzen Metro Extracts project](https://mapzen.com/blog/metro-extracts-on-demand/).
 
 The stack integrates 5 repos from [Tilezen](https://github.com/tilezen):
 

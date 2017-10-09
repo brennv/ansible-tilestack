@@ -4,27 +4,25 @@
 
 [tileservers:vars]
 ansible_ssh_user=science
-# tilestack_repo=https://github.com/brennv/ansible-tilestack
-# tilestack_repo_version=master
 
+# Latest stable versions
 vector_datasource_repo=https://github.com/tilezen/vector-datasource
 vector_datasource_version=v1.4.0
-
 tileserver_repo=https://github.com/tilezen/tileserver
 tileserver_version=v2.1.0
-
 tilequeue_repo=https://github.com/tilezen/tilequeue
 tilequeue_version=v1.9.0
-
 mapbox_vector_tile_repo=https://github.com/tilezen/mapbox-vector-tile
 mapbox_vector_tile_version=v1.2.0
-
-raw_tiles_repo=https://github.com/tilezen/raw_tiles  # not raw-tiles
+raw_tiles_repo=https://github.com/tilezen/raw_tiles
 raw_tiles_version=master
 
-
+# Set metro extract location from
+# https://mapzen.com/data/metro-extracts/
 default_location=new-york_new-york
-# export PGUSER='science'
+
+# Postgres configs
+PGUSER='science'
 PGPASSWORD='super-secret'
 PGDB='osm'
 PGVERSION='9.5'
