@@ -41,3 +41,4 @@ ansible-playbook -vv deploy.yml
 
 - Configuring nginx and gnuicorn for tileserver api
 - Exposing postgres for direct access
+- Add MongoDB for geojson ETL
