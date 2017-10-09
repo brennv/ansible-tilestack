@@ -12,7 +12,7 @@ The stack integrates 5 repos from [Tilezen](https://github.com/tilezen):
 - mapbox-vector-tile
 - raw_tiles
 
-# Prerequisites
+### Prerequisites
 
 Install ansible and customize `.hosts`.
 
@@ -21,7 +21,7 @@ pip install ansible
 nano .hosts
 ```
 
-# Usage
+## Usage
 
 Deploy a tileserver.
 
@@ -29,7 +29,7 @@ Deploy a tileserver.
 ansible-playbook deploy.yml
 ```
 
-# Debugging
+### Debugging
 
 Edit `deploy.yml` and add some v's for verbosity:
 
@@ -37,7 +37,7 @@ Edit `deploy.yml` and add some v's for verbosity:
 ansible-playbook -vv deploy.yml
 ```
 
-# In-progress
+### In-progress
 
 - Configuring nginx and gnuicorn for tileserver api
 - Exposing postgres for direct access
