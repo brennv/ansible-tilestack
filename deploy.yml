@@ -101,6 +101,9 @@
       requirements: /home/{{ ansible_ssh_user }}/tilestack/vector-datasource/requirements.txt
       virtualenv: /home/{{ ansible_ssh_user }}/tilestack/env
       virtualenv_python: python2.7
+
+
+      
   # - name: remove conflicted sister repo dependencies; tileserver, tilequeue
   #   pip: name={{item}} state=absent
   #   with_items:
