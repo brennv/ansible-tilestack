@@ -42,3 +42,5 @@ ansible-playbook -vv deploy.yml
 - Configuring nginx and gnuicorn for tileserver api
 - Exposing postgres for direct access
 - Add MongoDB for geojson ETL
+- Start data pipeline to ingest mappable data from https://datasf.org/opendata/
+- Document methods for displaying tileserver layers
